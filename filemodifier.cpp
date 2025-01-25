@@ -32,8 +32,6 @@ void FileModifier::run_modification() {
             continue;
         }
 
-        qDebug() << "Here!\n";
-
         // Защита от дурака
         if (fileInfo.isReadable() && !file.isOpen()) {
 
@@ -58,6 +56,8 @@ void FileModifier::modify_file(QFile &file) {
 
     QByteArray data = file.readAll();
 
+    qDebug() << xor_mask << "\n";
+
     for (int i = 0; i < data.size(); ++i) {
 
         data[i] ^= this->xor_mask[i % 8];
@@ -76,7 +76,6 @@ void FileModifier::save_output(QFile &file, QByteArray& data) {
 
     QFileInfo output_info(file);
     QString output_destination = this->output_path.absolutePath() + "/" + output_info.baseName() + "." + output_info.suffix();
-    qDebug() << output_destination << "\n";
 
     if (this->overwrite_output_copies) {
 

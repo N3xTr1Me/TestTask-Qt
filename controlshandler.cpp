@@ -67,6 +67,7 @@ QList<QLineEdit*> Controller::create_text_fields() {
     connect(input_path, QLineEdit::textChanged, this, &this->input_path_edited);
     connect(output_path, QLineEdit::textChanged, this, &this->output_path_edited);
     connect(input_file_mask, QLineEdit::textChanged, this, &this->input_mask_edited);
+    connect(xor_mask, QLineEdit::textChanged, this, &this->xor_mask_edited);
     connect(timer_value, QLineEdit::textChanged, this, &this->timer_value_edited);
 
     QList<QLineEdit*> text_fields = {input_path, output_path, input_file_mask, xor_mask, timer_value};
